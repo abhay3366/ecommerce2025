@@ -42,7 +42,7 @@ const Header = () => {
         {/* logo section */}
         <div className="flex gap-7 items-center">
           <Link to={"/"}>
-            <h1 className="font-bold text-3xl">TECLOVE</h1>
+            <h1 className="font-bold text-3xl">ShopEase</h1>
           </Link>
           <div className="flex gap-1 cursor-pointer text-gray-700 items-center">
             <FaMapMarkerAlt className="text-red-500" />
