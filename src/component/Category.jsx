@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContextProvider";
 
 const Category = () => {
-  const { data } = useContext(DataContext);
+  const { data,getUniqueCategory } = useContext(DataContext);
 
   // Get unique categories
-  const getUniqueCategory = data.filter(
-    (item, index, self) => index === self.findIndex(obj => obj.category === item.category)
-  );
+  // const getUniqueCategory = data.filter(
+  //   (item, index, self) => index === self.findIndex(obj => obj.category === item.category)
+  // );
 
   return (
     <div className="bg-[#101829]">

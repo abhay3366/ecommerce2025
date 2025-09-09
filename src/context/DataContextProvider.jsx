@@ -14,8 +14,14 @@ const DataContextProvider = ({children}) => {
     useEffect(()=>{
         getData();
     },[])
+
+      const getUniqueCategory = data.filter(
+    (item, index, self) => index === self.findIndex(obj => obj.category === item.category)
+  );
+
+
     return(
-        <DataContext.Provider value={{data}}>
+        <DataContext.Provider value={{data,getUniqueCategory}}>
             {children}
         </DataContext.Provider>
     );
