@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import Category from "./Category";
 
 // ✅ Next Arrow (Right Side)
 function SampleNextArrow({ onClick }) {
@@ -58,7 +59,7 @@ const Carousel = () => {
                 <h3 className="text-red-500 font-semibold text-sm uppercase">
                   Powering Your World with the Best in Electronics
                 </h3>
-                <h1 className="text-4xl md:text-5xl font-bold uppercase md:w-[500px] text-white">
+                <h1 className="text-4xl md:text-4xl font-bold uppercase md:w-[500px] text-white">
                   {item.title}
                 </h1>
                 <p className="md:w-[500px] text-gray-300 line-clamp-3">
@@ -88,6 +89,7 @@ const Carousel = () => {
           </div>
         ))}
       </Slider>
+      <Category/>
     </div>
   );
 };
