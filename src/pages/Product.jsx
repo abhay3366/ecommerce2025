@@ -2,13 +2,14 @@ import { useContext } from "react"
 import { DataContext } from "../context/DataContextProvider"
 import FilterSection from "../component/FilterSection"
 import ProductCart from "../component/ProductCart"
+import ShimmerPage from "../Shimmer/ShimmerCard"
 
 const Product = () => {
   const {data,getUniqueCategory}=useContext(DataContext)
   console.log("getUniqueCategorydd",getUniqueCategory)
 
     if(data.length==0){
-      return "Loading..."
+      return <ShimmerPage/>
     }
 
   return (
