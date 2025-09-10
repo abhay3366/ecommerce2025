@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DataContext } from "../context/DataContextProvider"
 import FilterSection from "../component/FilterSection"
 import ProductCart from "../component/ProductCart"
@@ -7,6 +7,13 @@ import ShimmerPage from "../Shimmer/ShimmerCard"
 const Product = () => {
   const {data,getUniqueCategory}=useContext(DataContext)
   console.log("getUniqueCategorydd",getUniqueCategory)
+
+  const[search,setSearch]=useState("");
+  const[category,setCategory]=useState("All");
+  const[rating,setRating]=useState("");
+
+   const serachFilterData=data.filter((el)=>el.title.toLowerCase().includes(search.toLowerCase()));
+   console.log("serachdata",serachFilterData)
 
     if(data.length==0){
       return <ShimmerPage/>
@@ -18,10 +25,10 @@ const Product = () => {
         {
           data?.length>0?(
             <div className="flex gap-8">
-            <FilterSection/>
+            <FilterSection search={search} setSearch={setSearch} category={category} setCategory={setCategory} rating={rating} setRating={setRating} />
             <div className="grid grid-cols-4 gap-7 mt-7">
               {
-                data.map((product,index)=>(
+                serachFilterData.map((product,index)=>(
                   <ProductCart key={index} product={product} />
                 ))
               }
