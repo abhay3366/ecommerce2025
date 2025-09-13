@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataContextProvider";
 
-const FilterSection = (props) => {
-  const {search,setSearch,category,setCategory,rating,setRating}=props;
+const FilterSection = ({search,setSearch,category,setCategory,rating,setRating,priceRange,setPriceRange}) => {
   const { getUniqueCategory } = useContext(DataContext);
   // const getUniqueCategoryWithAll = [{ category: "All" }, ...getUniqueCategory];
 
@@ -33,6 +32,11 @@ const FilterSection = (props) => {
     }
     
   }
+
+  const handlePrice=(e)=>{
+    setPriceRange(e.target.value)
+  }
+
   return (
     <div className="bg-gray-100 mt-10 p-4 rounded-md h-max">
       <input
@@ -68,8 +72,8 @@ const FilterSection = (props) => {
       {/* price range */}
        <h1 className="mt-5 font-semibold text-xl">Price Range</h1>
        <div className="flex flex-col gap-2">
-            <label htmlFor="">Price Range $0-$5000</label>
-            <input type="range" name="" id="" />
+            <label htmlFor="">Range min:50-max:${priceRange}</label>
+            <input type="range" min="50" max="1000" value={priceRange} onChange={handlePrice} id="" />
        </div>
        <button className="bg-red-500 text-white px-3 py-2 cursor-pointer rounded-md w-full mt-3">Rest Filter</button>
     </div>
