@@ -72,7 +72,7 @@ const FilterSection = ({search,setSearch,category,setCategory,rating,setRating,p
       {/* price range */}
        <h1 className="mt-5 font-semibold text-xl">Price Range</h1>
        <div className="flex flex-col gap-2">
-            <label htmlFor="">Range min:50-max:${priceRange}</label>
+            <label htmlFor="">Range min:0-max:${priceRange}</label>
             <input type="range" min="50" max="1000" value={priceRange} onChange={handlePrice} id="" />
        </div>
        <button className="bg-red-500 text-white px-3 py-2 cursor-pointer rounded-md w-full mt-3">Rest Filter</button>
