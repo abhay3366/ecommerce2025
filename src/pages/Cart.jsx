@@ -6,9 +6,8 @@ import { decrement, deleteCartItem, increment } from "../utils/cartSlice";
 import EmptyCart from "../component/EmptyCart";
 
 const Cart = () => {
-  const [count, setCount] = useState();
   const cartItems = useSelector((state) => state.cart.value);
-  console.log(cartItems);
+  console.log("cart",cartItems);
   const dispatch = useDispatch();
   // custome hook of location
   const { location, openDropDown, getLocation } = useGetLocation();
@@ -17,10 +16,6 @@ const Cart = () => {
   }, []);
   // it get detail of user
   const user = useUser();
-
-  const totalPriceArr = [];
-
-  console.log("totalpricearr", totalPriceArr);
 
   // Total cost
   const totalPrice = cartItems.reduce(
@@ -48,7 +43,7 @@ const Cart = () => {
                 className="w-16 h-16 object-cover rounded"
               />
               <div>
-                <h2 className="font-semibold">{item.title.slice(0, 30)}</h2>
+                <h2 className="font-semibold">{item?.title?.slice(0, 30)}</h2>
                 <p className="text-gray-500">${item.price}</p>
               </div>
             </div>

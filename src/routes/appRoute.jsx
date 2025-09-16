@@ -6,6 +6,9 @@ import Product from "../pages/Product";
 import Contact from "../pages/Contact";
 import Cart from "../pages/Cart";
 import SingleProduct from "../pages/SingleProduct";
+import CategoryProduct from "../pages/CategoryProduct";
+
+import CheckLogin from "../component/CheckLogin";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,8 +29,12 @@ const appRouter = createBrowserRouter([
         element: <Product />,
       },
       {
-        path:"/products/:id",
-        element:<SingleProduct/>,
+        path: "/products/:id",
+        element: <SingleProduct />,
+      },
+      {
+        path: "/category/:category",
+        element: <CategoryProduct />,
       },
       {
         path: "/contact",
@@ -35,8 +42,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
-      }
+        element: (
+          <CheckLogin>
+            <Cart />
+          </CheckLogin>
+        ),
+      },
     ],
   },
 ]);

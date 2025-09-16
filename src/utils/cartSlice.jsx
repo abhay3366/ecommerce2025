@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    value: [],
+    value: localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")):[],
   },
   reducers: {
     addToCart: (state, action) => {
@@ -15,6 +15,7 @@ export const cartSlice = createSlice({
              toast.success("Product quantity increased")
         }else{
             state.value.push({...product,"quantity":1})
+            localStorage.setItem("cart",JSON.stringify(state.value));
               toast.success("Product is added to cart")
         }
       
@@ -29,16 +30,19 @@ export const cartSlice = createSlice({
     },
     increment:(state,action)=>{
        const product = state.value.find((item) => item.id === action.payload);
+       localStorage.setItem("cart",JSON.stringify(state.value));
       if (product) {
         product.quantity += 1;
          toast.success("Product quantity increased")
       }
     },
     deleteCartItem:(state,action)=>{
+      localStorage.setItem("cart",JSON.stringify(state.value));
         const id=action.payload
         console.log("di",id)
         // const product=state.value.find((item)=>item.id===action.payload);
         state.value=state.value.filter((item)=>item.id!=id)
+        localStorage.removeItem("cart")
         toast.error("Item has been deleted")
     }
   },
@@ -48,6 +52,3 @@ export const { addToCart,decrement,increment,deleteCartItem } = cartSlice.action
 export default cartSlice.reducer;
 
 
-//   state.value.push(action.payload)
-//        console.log("d",state.value)
-//        console.log(JSON.stringify(state.value))

@@ -38,10 +38,13 @@ const Header = () => {
     getLocation()
   }, []);
 
+  
+
   return (
     <div className="bg-white py-3 shadow-2xl">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-4 gap-4 md:gap-0">
         {/* logo section */}
+       
         <div className="flex flex-col md:flex-row gap-3 md:gap-7 items-center w-full md:w-auto">
           <Link to={"/"}>
             <h1 className="font-bold text-3xl">ShopEase</h1>
