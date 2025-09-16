@@ -12,7 +12,7 @@ const Pagination = (
     setCurrentPage(el)
   }
   
-  console.log("startindex",startIndex,currentPage)
+  // console.log("startindex",startIndex,currentPage)
   return (
     <div className='flex justify-end'>
       <div className=''>

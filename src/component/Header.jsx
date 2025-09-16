@@ -8,30 +8,34 @@ import React, { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { FaCaretDown, FaMapMarkerAlt } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import useGetLocation from "../cutomeHook/useGetLocation";
 
 const Header = () => {
-  const [location, setLocation] = useState(" ");
-  const [openDropDown, setOpenDropDown] = useState(false);
+  // const [location, setLocation] = useState(" ");
+  // const [openDropDown, setOpenDropDown] = useState(false);
+  const cartData=useSelector((state)=>state.cart.value);
+  
 
-  const getLocation = async () => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
-      try {
-        const res = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-        );
-        const data = await res.json();
-        setLocation(data.address);
-        setOpenDropDown(false);
-      } catch (error) {
-        console.log(error);
-      }
-    });
-  };
-
+  // const getLocation = async () => {
+  //   navigator.geolocation.getCurrentPosition(async (position) => {
+  //     const { latitude, longitude } = position.coords;
+  //     try {
+  //       const res = await fetch(
+  //         `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+  //       );
+  //       const data = await res.json();
+  //       setLocation(data.address);
+  //       setOpenDropDown(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   });
+  // };
+  const {location,openDropDown,getLocation}=  useGetLocation()
   useEffect(() => {
-    getLocation();
+    getLocation()
   }, []);
 
   return (
@@ -116,7 +120,7 @@ const Header = () => {
           <Link to="/cart" className="relative mt-2 md:mt-0">
             <IoCartOutline className="h-6 w-6" />
             <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-4 text-white text-xs md:text-sm">
-              0
+              {cartData?.length}
             </span>
           </Link>
           <div className="mt-2 md:mt-0">

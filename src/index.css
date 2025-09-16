@@ -4,6 +4,6 @@ input{
     background-color: white;
     /* this property change the color of input */
     accent-color: red;
-    border: 1px solid white;
-    color: #3333;
+    /* border: 1px solid white; */
+    color: black;
 }
